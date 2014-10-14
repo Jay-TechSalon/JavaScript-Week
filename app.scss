@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+$font-base: 400 1.3rem/1rem ‘Lato’, sans-serif;
+$font-text-area: 300 1rem/1rem ‘Lato’, sans-serif;
+$font-title: 700 2.5rem/2.5rem ‘Lato’, sans-serif;
+$font-subtitle: 700 2rem/2rem ‘Lato’, sans-serif;
+$font-thin: 300 1.2rem/1.7rem ‘Lato’, sans-serif;
+$margin-title: 1rem;
+
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+body {
+  background-color: #DBDBCD;
+}
+h1 {
+  font: $font-title;
+  margin-left: .5rem;
+}
+.book_review {
+  padding: 1rem;
+  background-color: #E6E6D1;
+  margin-bottom: 2%;
+  h2 {
+    font: $font-subtitle;
+    margin: 0rem;
+  }
+  h3 {
+    font: $font-base;
+      color: #3191A6;
+      margin-top: .2rem;
+  }
+  textarea {
+    width: 100%;
+    height: 4rem;
+    font: $font-text-area;
+
+  }
+  img {
+    padding: 0 1rem 0 0;
+    width: 10rem;
+    float: left;
+  }
+  p {
+    font: $font-thin;
+    color: #333;
+    &:nth-child(2) {
+      font: $font-base;
+      color: #3191A6;
+      margin-top: .4rem;
+    }
+  }
+}
+
