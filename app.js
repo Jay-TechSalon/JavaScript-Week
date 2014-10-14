@@ -23,21 +23,41 @@ function displayBook() {
   bookReview.className = 'book_review cf';
 
   var result = "<h2>Book: " + this.name + "</h2>";
-    result += "<p>Rating: " + this.rating + " out 5.</p>";
-    result += '<img src="'+ this.photo +'" alt="'+ this.name +' book cover image." />';
-    result += "<p>Review: " + this.review + "</p>";
-    bookReview.innerHTML = result;
-    infoBox.appendChild(bookReview);
+  result += "<p>Rating: " + this.rating + " out 5.</p>";
+  result += '<img src="'+ this.photo +'" alt="'+ this.name +' book cover image." />';
+  result += "<p>Review: " + this.review + "</p>";
+  bookReview.innerHTML = result;
+  infoBox.appendChild(bookReview);
 
-      (function() {
-        var review = "<h3>Write your own Review.</h3>";
-            review += '<textarea type="text" placeholder="Write review">';
-      bookReview.innerHTML += review;
-      infoBox.appendChild(bookReview);
-      }());
+  (function() {
+    var review = "<h3>Write your own Review.</h3>";
+    review += '<textarea type="text" placeholder="Write review">';
+    bookReview.innerHTML += review;
+    infoBox.appendChild(bookReview);
+  }());
 }
 
 
 fourBook.displayBook();
 secretBook.displayBook();
+var bookButton = document.getElementById('add-my-book');
 
+bookButton.addEventListener("click", addMyBook);
+
+function addMyBook() {
+  var myBookName = document.getElementById('my-book-name').value;
+  var myBookRating = document.getElementById('my-book-rating').value;
+  var myBookNotes = document.getElementById('my-book-notes').value;
+
+  var myBookCollection = document.getElementById('my-book-collection');
+
+  var bookContainer = document.createElement('div');
+
+  var result = '<h2>Book: ' + myBookName + '</h2>';
+      result += '<p>Rating: ' + myBookRating + ' out 5.</p>';
+      result += '<p>Notes: ' + myBookNotes + '</p>';
+  bookContainer.innerHTML = result;
+  myBookCollection.appendChild(bookContainer);
+
+
+}
