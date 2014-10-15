@@ -6,6 +6,16 @@ $font-subtitle: 700 2rem/2rem ‘Lato’, sans-serif;
 $font-thin: 300 1.2rem/1.7rem ‘Lato’, sans-serif;
 $margin-title: 1rem;
 
+button {
+  font: $font-thin;
+  color: #3191A6;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: #3191A6;
+}
+
 .cf:before, .cf:after {
   content: " ";
   display: table;
@@ -22,7 +32,7 @@ h1 {
   font: $font-title;
   margin-left: .5rem;
 }
-.book_review {
+.book_review, .our_review {
   padding: 1rem;
   background-color: #E6E6D1;
   margin-bottom: 2%;
@@ -35,12 +45,15 @@ h1 {
       color: #3191A6;
       margin-top: .2rem;
   }
-  textarea {
+  input {
     width: 100%;
-    height: 4rem;
+    height: 1.5rem;
+    margin-bottom: .3rem;
     font: $font-text-area;
-
-  }
+    }
+  textarea {
+    height: 3rem;
+    }
   img {
     padding: 0 1rem 0 0;
     width: 10rem;

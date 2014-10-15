@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>My Library</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+  <nav class="main_nav">
+    <button><a href="index.html">Top Reads</a>
+    </button>
+    <button><a href="library.html">My Library</a>
+    </button>
+  </nav>
+
+  <h1>My Library</h1>
+  <section class="our_review">
+    <h2>Total Books: <span id="book-total"></span></h2>
+    <h3>Average Rating: <span id="average-rating"></span></h3>
+  <input id="my-book-name" type="text" placeholder="Book Name">
+  <input id="my-book-rating" type="number" min="1" max="5" placeholder="Rating">
+  <input id="my-book-notes" type="text" placeholder="Notes">
+  <button id="add-my-book">Add Book!</button>
+  </section>
+
+  <section id="my-book-collection"></section>
+
+  <script src="library.js"></script>
+</body>
+
+</html>

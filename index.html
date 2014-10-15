@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Module</title>
   <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
   <nav class="main_nav">
-    <ul>
-      <li>Top Reads</li>
-      <li>My Library</li>
-    </ul>
+    <button><a href="index.html">Top Reads</a>
+    </button>
+    <button><a href="library.html">My Library</a>
+    </button>
   </nav>
   <h1>Top Books to Read</h1>
   <div id="info">
   </div>
-  <h1>My Library</h1>
-  <label>Book Name: </label><input id="my-book-name" type="text">
-  <label>Rating: </label><input id="my-book-rating" type="number" min="1" max="5">
-  <label>Notes: </label><input id="my-book-notes" type="text">
-  <div id="average-rating"></div>
-  <button id="add-my-book">Add Book!</button>
-  <div id="my-book-collection"></div>
 
   <script src="app.js"></script>
 </body>
+
 </html>
