@@ -51,7 +51,6 @@ var i = 0;
 
 
 var bookButton = document.getElementById('add-my-book');
-
 bookButton.addEventListener("click", addMyBook);
 
 function addMyBook() {
