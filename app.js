@@ -46,7 +46,19 @@ function UsersBook(name, rating, review){
   this.review = review;
 }
 
-var UserList = [];
+function getAverage() {
+    var length = userList.length,
+        ratingSum = 0,
+        average;
+    for (var i = 0; i < length; i++) {
+      ratingSum += parseInt(userList[i].rating, 10);
+    }
+    average = ratingSum / length;
+    document.getElementById("average-rating").innerHTML = average;
+}
+
+
+var userList = [];
 var i = 0;
 
 
@@ -59,18 +71,18 @@ function addMyBook() {
   var rating = document.getElementById('my-book-rating').value;
   var review = document.getElementById('my-book-notes').value;
 
-  UserList[i] = new UsersBook(name, rating, review);
+  userList[i] = new UsersBook(name, rating, review);
 
   var myBookCollection = document.getElementById('my-book-collection');
   var bookContainer = document.createElement('div');
 
-  var result = '<h2>Book: ' + UserList[i].name + '</h2>';
-      result += '<p>Rating: ' + UserList[i].rating + ' out 5.</p>';
-      result += '<p>Notes: ' + UserList[i].review + '</p>';
+  var result = '<h2>Book: ' + userList[i].name + '</h2>';
+      result += '<p>Rating: ' + userList[i].rating + ' out 5.</p>';
+      result += '<p>Notes: ' + userList[i].review + '</p>';
 
   bookContainer.innerHTML = result;
   myBookCollection.appendChild(bookContainer);
 
   i++;
-
+  getAverage();
 }
