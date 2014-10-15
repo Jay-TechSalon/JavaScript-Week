@@ -7,9 +7,6 @@ function Book(name, rating, photo, review){
   this.displayBook = displayBook;
 }
 
-// var Book = [];
-// var i=0;
-
 var infoBox = document.getElementById('info');
 
 // new books
@@ -40,24 +37,40 @@ function displayBook() {
 
 fourBook.displayBook();
 secretBook.displayBook();
+
+//////////////////
+
+function UsersBook(name, rating, review){
+  this.name = name;
+  this.rating = rating;
+  this.review = review;
+}
+
+var UserList = [];
+var i = 0;
+
+
 var bookButton = document.getElementById('add-my-book');
 
 bookButton.addEventListener("click", addMyBook);
 
 function addMyBook() {
-  var myBookName = document.getElementById('my-book-name').value;
-  var myBookRating = document.getElementById('my-book-rating').value;
-  var myBookNotes = document.getElementById('my-book-notes').value;
+  var name = document.getElementById('my-book-name').value;
+  var rating = document.getElementById('my-book-rating').value;
+  var review = document.getElementById('my-book-notes').value;
+
+  UserList[i] = new UsersBook(name, rating, review);
 
   var myBookCollection = document.getElementById('my-book-collection');
-
   var bookContainer = document.createElement('div');
 
-  var result = '<h2>Book: ' + myBookName + '</h2>';
-      result += '<p>Rating: ' + myBookRating + ' out 5.</p>';
-      result += '<p>Notes: ' + myBookNotes + '</p>';
+  var result = '<h2>Book: ' + UserList[i].name + '</h2>';
+      result += '<p>Rating: ' + UserList[i].rating + ' out 5.</p>';
+      result += '<p>Notes: ' + UserList[i].review + '</p>';
+
   bookContainer.innerHTML = result;
   myBookCollection.appendChild(bookContainer);
 
+  i++;
 
 }
