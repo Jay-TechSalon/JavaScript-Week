@@ -32,13 +32,15 @@ h1 {
     font: 400 1.3rem/1rem ‘Lato’, sans-serif;
     color: #3191A6;
     margin-top: .2rem; }
-  .book-review input, .our-review input {
+  .book-review input, .book-review select, .book-review textarea, .our-review input, .our-review select, .our-review textarea {
     width: 100%;
     height: 1.5rem;
     margin-bottom: .3rem;
     font: 300 1rem/1rem ‘Lato’, sans-serif; }
   .book-review textarea, .our-review textarea {
-    height: 3rem; }
+    margin-top: 0.2rem;
+    height: 4rem;
+    border: 1px solid #CCC; }
   .book-review img, .our-review img {
     padding: 0 1rem 0 0;
     width: 10rem;

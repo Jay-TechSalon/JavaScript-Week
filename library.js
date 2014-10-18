@@ -1,4 +1,14 @@
-// constructor function for users books
+// Array and counter for storing user's book entries
+//// Checks for localStorage userList,
+//// if none, assign empty array to variable
+var userList = JSON.parse(localStorage.getItem('userList')) || [],
+    i = 0,
+    myBookCollection = document.getElementById('my-book-collection');
+
+document.getElementById('add-my-book').addEventListener('click', addMyBook);
+
+
+// constructor function for user's books
 function UsersBook(name, image, rating, review){
   this.name = name;
   this.image = image;
@@ -20,13 +30,6 @@ function getAverage() {
     document.getElementById('book-total').innerHTML = bookTotal;
 }
 
-// save the users books to an array
-var userList = [];
-var i = 0;
-
-var bookButton = document.getElementById('add-my-book');
-bookButton.addEventListener('click', addMyBook);
-
 // add book function that grabs the values from the users input
 // and logs it into the userList array above as it instantiates
 // another book - then adds this to the DOM
@@ -35,11 +38,11 @@ function addMyBook() {
       image = document.getElementById('my-image').value,
       rating = document.getElementById('my-book-rating').value,
       review = document.getElementById('my-book-notes').value,
-      myBookCollection = document.getElementById('my-book-collection'),
       bookContainer = document.createElement('div'),
       bookEntry;
 
   userList[i] = new UsersBook(name, image, rating, review);
+  localStorage.setItem('userList', JSON.stringify(userList));
 
   bookContainer.className = 'our_review cf';
 
@@ -54,3 +57,23 @@ function addMyBook() {
   i++;
   getAverage();
 }
+
+// renders localStorage bookList to DOM
+function renderBookList() {
+  for (var i = 0, numBooks = userList.length; i < numBooks; i++) {
+    var bookContainer = document.createElement('div'),
+        bookEntry;
+
+    bookContainer.className = 'our_review cf';
+
+    bookEntry = '<h2>Book: ' + userList[i].name + '</h2>' +
+                '<p>Rating: ' + userList[i].rating + ' out of 5.</p>' +
+                '<img src="' + userList[i].image + '"/>' +
+                '<p>Notes: ' + userList[i].review + '</p>';
+
+    bookContainer.innerHTML = bookEntry;
+    myBookCollection.appendChild(bookContainer);
+  }
+}
+
+renderBookList();

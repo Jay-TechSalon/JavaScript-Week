@@ -48,14 +48,16 @@ h1 {
       color: $accent-color;
       margin-top: .2rem;
   }
-  input {
+  input, select, textarea {
     width: 100%;
     height: 1.5rem;
     margin-bottom: .3rem;
     font: $font-text-area;
     }
   textarea {
-    height: 3rem;
+    margin-top: 0.2rem;
+    height: 4rem;
+    border: 1px solid #CCC;
     }
   img {
     padding: 0 1rem 0 0;
@@ -72,4 +74,3 @@ h1 {
     }
   }
 }
-
