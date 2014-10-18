@@ -25,7 +25,13 @@
     </h3>
     <input id="my-book-name" type="text" placeholder="Book Name">
     <input id="my-image" type="text" placeholder="Image URL">
-    <input id="my-book-rating" type="number" min="1" max="5" placeholder="Rating">
+    <label for="my-book-rating">Rating: </label><select id="my-book-rating">
+      <option value="1">1 Star</option>
+      <option value="2">2 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="5">5 Stars</option>
+    </select>
     <input id="my-book-notes" type="text" placeholder="Notes">
     <button id="add-my-book">Add Book!</button>
   </section>

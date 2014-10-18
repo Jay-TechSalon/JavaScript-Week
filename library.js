@@ -44,7 +44,7 @@ function addMyBook() {
   bookContainer.className = 'our_review cf';
 
   bookEntry = '<h2>Book: ' + userList[i].name + '</h2>' +
-              '<p>Rating: ' + userList[i].rating + ' out 5.</p>' +
+              '<p>Rating: ' + userList[i].rating + ' out of 5.</p>' +
               '<img src="' + userList[i].image + '"/>' +
               '<p>Notes: ' + userList[i].review + '</p>';
 
