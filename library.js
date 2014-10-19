@@ -2,7 +2,7 @@
 //// Checks for localStorage userList,
 //// if none, assign empty array to variable
 var userList = JSON.parse(localStorage.getItem('userList')) || [],
-    i = 0,
+    bookIndex = 0,
     myBookCollection = document.getElementById('my-book-collection');
 
 document.getElementById('add-my-book').addEventListener('click', addMyBook);
@@ -14,6 +14,23 @@ function UsersBook(name, image, rating, review){
   this.image = image;
   this.rating = rating;
   this.review = review;
+}
+
+// creates DOM elements with book info and appends to page
+function renderBook(index) {
+  var bookContainer = document.createElement('div'),
+      bookEntry;
+
+  bookContainer.className = 'our_review cf';
+
+  bookEntry = '<h2>Book: ' + userList[index].name + '</h2>' +
+              '<p>Rating: ' + userList[index].rating + ' out of 5.</p>' +
+              '<img src="' + userList[index].image + '"/>' +
+              '<p>Notes: ' + userList[index].review + '</p>';
+
+  bookContainer.innerHTML = bookEntry;
+  myBookCollection.appendChild(bookContainer);
+  getAverage();
 }
 
 // for loop to iterate throught the added books to get
@@ -30,6 +47,13 @@ function getAverage() {
     document.getElementById('book-total').innerHTML = bookTotal;
 }
 
+// renders books stored in localStorage
+function displayLocalStorage() {
+  for (var i = 0, numBooks = userList.length; i < numBooks; i++) {
+    renderBook(i);
+  }
+}
+
 // add book function that grabs the values from the users input
 // and logs it into the userList array above as it instantiates
 // another book - then adds this to the DOM
@@ -38,42 +62,17 @@ function addMyBook() {
       image = document.getElementById('my-image').value,
       rating = document.getElementById('my-book-rating').value,
       review = document.getElementById('my-book-notes').value,
-      bookContainer = document.createElement('div'),
-      bookEntry;
+      // store the current book index in a new variable
+      // so the renderBook function works with both localStorage
+      // and added books
+      thisBook = bookIndex;
 
-  userList[i] = new UsersBook(name, image, rating, review);
+  userList[bookIndex] = new UsersBook(name, image, rating, review);
   localStorage.setItem('userList', JSON.stringify(userList));
 
-  bookContainer.className = 'our_review cf';
+  renderBook(thisBook);
 
-  bookEntry = '<h2>Book: ' + userList[i].name + '</h2>' +
-              '<p>Rating: ' + userList[i].rating + ' out of 5.</p>' +
-              '<img src="' + userList[i].image + '"/>' +
-              '<p>Notes: ' + userList[i].review + '</p>';
-
-  bookContainer.innerHTML = bookEntry;
-  myBookCollection.appendChild(bookContainer);
-
-  i++;
-  getAverage();
+  bookIndex++;
 }
 
-// renders localStorage bookList to DOM
-function renderBookList() {
-  for (var i = 0, numBooks = userList.length; i < numBooks; i++) {
-    var bookContainer = document.createElement('div'),
-        bookEntry;
-
-    bookContainer.className = 'our_review cf';
-
-    bookEntry = '<h2>Book: ' + userList[i].name + '</h2>' +
-                '<p>Rating: ' + userList[i].rating + ' out of 5.</p>' +
-                '<img src="' + userList[i].image + '"/>' +
-                '<p>Notes: ' + userList[i].review + '</p>';
-
-    bookContainer.innerHTML = bookEntry;
-    myBookCollection.appendChild(bookContainer);
-  }
-}
-
-renderBookList();
+displayLocalStorage();
