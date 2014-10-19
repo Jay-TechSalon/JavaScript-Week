@@ -2,7 +2,6 @@
 //// Checks for localStorage userList,
 //// if none, assign empty array to variable
 var userList = JSON.parse(localStorage.getItem('userList')) || [],
-    bookIndex = 0,
     myBookCollection = document.getElementById('my-book-collection');
 
 document.getElementById('add-my-book').addEventListener('click', addMyBook);
@@ -48,7 +47,7 @@ function getAverage() {
 }
 
 // renders books stored in localStorage
-function displayLocalStorage() {
+function addLocalStorage() {
   for (var i = 0, numBooks = userList.length; i < numBooks; i++) {
     renderBook(i);
   }
@@ -62,17 +61,14 @@ function addMyBook() {
       image = document.getElementById('my-image').value,
       rating = document.getElementById('my-book-rating').value,
       review = document.getElementById('my-book-notes').value,
-      // store the current book index in a new variable
-      // so the renderBook function works with both localStorage
-      // and added books
-      thisBook = bookIndex;
+      // use the current list length to assign the array index
+      // for the new book
+      thisBook = userList.length;
 
-  userList[bookIndex] = new UsersBook(name, image, rating, review);
+  userList.push(new UsersBook(name, image, rating, review));
   localStorage.setItem('userList', JSON.stringify(userList));
 
   renderBook(thisBook);
-
-  bookIndex++;
 }
 
-displayLocalStorage();
+addLocalStorage();
