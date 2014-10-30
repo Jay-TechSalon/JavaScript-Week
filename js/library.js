@@ -4,7 +4,7 @@
 var userList = JSON.parse(localStorage.getItem('userList')) || [],
     myBookCollection = document.getElementById('my-book-collection');
 
-document.getElementById('add-my-book').addEventListener('click', addMyBook);
+document.getElementById('add-my-book').addEventListener('click', addMyBook, false);
 
 
 // constructor function for user's books
@@ -20,7 +20,7 @@ function renderBook(index) {
   var bookContainer = document.createElement('div'),
       bookEntry;
 
-  bookContainer.className = 'our_review cf';
+  bookContainer.className = 'book-review cf';
 
   bookEntry = '<h2>Book: ' + userList[index].name + '</h2>' +
               '<p>Rating: ' + userList[index].rating + ' out of 5.</p>' +
@@ -63,12 +63,19 @@ function addMyBook() {
       review = document.getElementById('my-book-notes').value,
       // use the current list length to assign the array index
       // for the new book
-      thisBook = userList.length;
+      thisBooksIndex = userList.length;
 
   userList.push(new UsersBook(name, image, rating, review));
   localStorage.setItem('userList', JSON.stringify(userList));
 
-  renderBook(thisBook);
+  renderBook(thisBooksIndex);
+
+  // clear input fields
+  // *NOTE* setting name.value = ''; doesn't work.. need to look into.
+  document.getElementById('my-book-name').value = '';
+  document.getElementById('my-image').value = '';
+  document.getElementById('my-book-rating').value = '1';
+  document.getElementById('my-book-notes').value = '';
 }
 
 addLocalStorage();
